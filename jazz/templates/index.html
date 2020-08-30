@@ -1,0 +1,47 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Jazz!</h1>
+  <p>Welcome to Hayley and Edward's record of Jazz Events.</p>
+  <h2>We've seen.........</h2>
+    <ul>
+    <li><strong>Different <a href="{% url 'players' %}">Players</a>: {{ num_players }}</strong></li>
+    <li><strong>Different <a href="{% url 'lineups' %}">Lineups</a>: {{ num_lineups }}</strong></li>
+  </ul>
+   
+  <h2>From.........</h2>
+  <ul>
+    <li><strong>{{ num_bands }} Different <a href="{% url 'bands' %}">Bands</a> </strong></li>
+  </ul>
+  
+  <h2>At.........</h2>
+  <ul>
+    <li><strong> {{ num_venus }} Different <a href="{% url 'venues' %}">Venues</a></strong></li>
+  </ul>
+  
+  <h2>And at.........</h2>
+  <ul>
+    <li><strong> {{ num_events }} Different kinds of <a href="{% url 'events' %}">Event</a></strong></li>
+  </ul>
+  
+  ----------------------------------------------------------------------
+  <h3>Players we've seen most times.......</h3>
+    {% for person in top_players %} 
+      <li>
+         <a href="{% url 'player-detail' person.player__slug %}">
+			                         {{ person.player__first_name }}
+			                         {% if person.player__nick_name != blank %} {{ person.player__nick_name }} {%endif%}
+	                                 {{ person.player__last_name }} </a>
+                                     - {{ person.c }}                                     
+                                     {% if person.c == 1 %} {{ "gig" }} {% endif %}
+                                     {% if person.c != 1 %} {{ "gigs" }} {% endif %}
+                                     
+                                     
+      </li>
+    {% endfor %}
+
+  
+  
+  ----------------------------------------------------------------------
+  
+{% endblock %}

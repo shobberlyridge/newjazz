@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Band List</h1>
+  {% if band_list %}
+  <ul>
+    {% for band in band_list %}
+      <li>
+         <a href="{{ band.slug }}">{{ band.band_name }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no Bands in the list.</p>
+  {% endif %}       
+{% endblock %}

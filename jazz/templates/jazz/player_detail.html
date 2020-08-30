@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>{{ player.full_name }}</h1> 
+  <p>{% if player.instrument %} ({{ player.instrument }}) {% endif %}</p>
+   
+  <p><strong>{% if player.date_of_birth %} Born: </strong> {{ player.date_of_birth|date:"j F Y"  }} {% endif %}</a></p></strong>
+  <p><strong>{% if player.date_of_death %} Died: </strong> {{ player.date_of_death|date:"j F Y"  }} {% endif %}</a></p></strong>
+  <p><strong>Web:</strong> <a href="{{ player.player_web }}" target="_blank" >{{ player.player_web }}</a></p> 
+  <p><strong>Wikipedia:</strong> <a href="{{ player.player_wikipedia }}" target="_blank" >{{ player.player_wikipedia }}</a></p> 
+  <p><strong>Comments:</strong> {{ player.comments }}</p>
+  <p><strong>Lineups:</strong> {% for lineup in player.lineup_set.all %}</p>
+			<a href="{% url 'lineup-detail' lineup.slug %}">{{ lineup }}</a>
+			{% endfor %} 
+			   
+{% endblock %}

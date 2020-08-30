@@ -1,0 +1,11 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>{{ venue.venue_name }}</h1>
+  <p><strong>Web:</strong> <a href="{{ venue.venue_web }}" target="_blank" >{{ venue.venue_web }}</a></p> 
+  <p><strong>Comments:</strong> {{ event.comments }}</p>
+  <p><strong>Lineups:</strong> {% for lineup in venue.lineup_set.all %}</p>
+			<a href="{% url 'lineup-detail' lineup.slug %}">{{ lineup }}</a>
+			{% endfor %} 
+    
+{% endblock %}

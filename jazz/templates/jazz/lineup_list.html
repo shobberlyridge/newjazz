@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Lineup List</h1>
+  {% if lineup_list %}
+  <ul>
+    {% for lineup in lineup_list %}
+      <li>
+         <a href="{{ lineup.slug}}">{{ lineup.band_name}}, {{ lineup.date|date:"j F Y" }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no Lineups in the list.</p>
+  {% endif %}       
+{% endblock %}

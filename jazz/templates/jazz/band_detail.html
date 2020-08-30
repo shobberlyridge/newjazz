@@ -1,0 +1,32 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>{{ band.band_name }}</h1>
+  <p><strong>Web:</strong> <a href="{{ band.band_web }}"  target="_blank"> {{ band.band_web }}</a></p> 
+  <p><strong>Comments:</strong> {{ event.comments }}</p>
+  <p><strong>Lineups:</strong> {% for lineup in band.lineup_set.all %}</p>
+			<a href="{% url 'lineup-detail' lineup.slug %}">{{ lineup }}</a>
+			{% endfor %} 
+    
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

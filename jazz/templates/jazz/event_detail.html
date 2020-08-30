@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>{{ event.event_name }}</h1>
+  <p><strong>Date:</strong> 
+  {% if event.date_from != blank %} {{ event.date_from|date:"j F Y"  }} {%endif%}
+  {% if event.date_from and event.date_to %} {{"-"}} {%endif%}
+  {% if event.date_to != blank %} {{ event.date_to|date:"j F Y" }} {%endif%}</p>
+  <p><strong>Web:</strong> <a href="{{ event.event_web }}" target="_blank">{{ event.event_web }}</a></p> 
+  <p><strong>Comments:</strong> {{ event.comments }}</p>
+  <p><strong>Lineups:</strong> {% for lineup in event.lineup_set.all %}<p>
+			<a href="{% url 'lineup-detail' lineup.slug %}">{{ lineup }}</a>
+			{% endfor %} 
+    
+{% endblock %}

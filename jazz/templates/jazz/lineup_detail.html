@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>{{ lineup.band_name }}</h1>
+  <p><strong>Date:</strong> {{ lineup.date|date:"j F Y"  }}</p>
+  <p><strong>Venue:</strong> 
+  {% if lineup.venue != blank %} <a href="{% url 'venue-detail' lineup.venue.slug %}" > {{ lineup.venue }} </a> {% endif %}
+  {% if lineup.venue and lineup.event %} {{"-"}} {%endif%}
+  {% if lineup.event != blank %} <a href="{% url 'event-detail' lineup.event.slug %}" > {{ lineup.event }} </a> {% endif %} <p>
+  {% if lineup.piece != blank %} ( {{ lineup.piece }} piece ){%endif%}</p>
+
+  
+
+   <p><strong>Players:</strong> </p>
+   {% for player in lineup.player.all %}
+       <p>  
+       <a href="{% url 'player-detail' player.slug %}">{{ player}} </a>
+       {% if player.instrument != blank %} ({{ player.instrument }}) {% endif %} </p>
+   {% endfor %} 
+  
+ 
+{% endblock %}

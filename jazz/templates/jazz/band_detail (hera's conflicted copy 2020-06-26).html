@@ -1,0 +1,55 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>{{ band.band_name }}</h1>
+  <!-- <p><strong>Author:</strong> <a href="">{{ book.author }}</a></p> <!-- author detail link not yet defined -->
+  <p><strong>Web:</strong> <a href="{{ band.band_web }}">{{ band.band_web }}</a></p> 
+  <p><strong>Comments:</strong> {{ band.comments }}</p>
+  
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Lineups:</h4>
+
+    {% for lineup in band.lineup_set.all %}
+      <hr>
+        {{ lineup.date|date:"j F Y" }}: 
+        {% if lineup.venue != blank %} {{ lineup.venue }} {%endif%}
+        {% if lineup.event != blank %} ({{ lineup.event }}) {%endif%} 
+          
+        {% for player in band.lineup.player_set.all %}
+				freddyon {{ band.lineup.player.first_name }} freddyoff
+        {% endfor %}  
+          
+          
+          
+        {% for player in band__lineup__player_set.all %}
+        fred
+        {{ player }}
+        {% if player.first_name != blank %} {{ player.first_name }} {%endif%}
+        fred
+        {{ player.full_name }}
+        {% endfor %}
+           
+        
+        
+        
+        
+        
+        
+        
+        
+      </p>
+     {% endfor %}
+     
+     {% for player in band__lineup__player_set.all %}
+     fred
+     {% if player.first_name != blank %} {{ player.first_name }} {%endif%}
+     fred
+     
+     {% endfor %}
+     <!-- {% if copy.status != 'a' %}
+        <p><strong>Due to be returned:</strong> {{ copy.due_back }}</p>
+      {% endif %}
+      <p><strong>Imprint:</strong> {{ copy.imprint }}</p>
+      <p class="text-muted"><strong>Id:</strong> {{ copy.id }}</p>
+   </div>
+{% endblock %}
