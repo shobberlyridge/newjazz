@@ -13,7 +13,7 @@ def index(request):
     num_bands = Band.objects.all().count()
     num_venus = Venue.objects.all().count()
     num_events = Event.objects.all().count()
-    top_players = Lineup.objects.values('player', 'player__first_name', 'player__nick_name', 'player__last_name', 'player__slug').annotate(c=Count('player')).order_by('-c') [:10]
+    top_players = Lineup.objects.values('player', 'player__first_name', 'player__nick_name', 'player__last_name', 'player__slug').annotate(c=Count('player')).order_by('-c') [:15]
         
     context = {
         'num_players': num_players,
