@@ -120,3 +120,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 #SHORT_DATE_FORMAT = 'd/m/Y'
+
+
+STATIC_ROOT = "jazz/static"
